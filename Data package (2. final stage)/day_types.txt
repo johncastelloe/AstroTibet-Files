@@ -1,0 +1,345 @@
+# -*- encoding : utf-8 -*-
+
+DAY_TYPES = [
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Birthdays and Anniversaries of Holy Beings",
+  :subtitle=> "",
+  :desc=> "",
+  :day_key=> "birthdays_and_anniversaries_of_holy_beings",
+  :abbr=> ""
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Buddha Days",
+  :subtitle=> "",
+  :desc=> "Karmic results are multiplied one hundred million times, as cited by Lama Zopa Rinpoche, from the Vinaya text <em>Treasure of Quotations and Logic.</em><data-ignore><br/><b>• Days 1–15 of Month 1:</b> Lord Buddha performed many miracles; the 15th is Day of Miracles.<br/><b>• Day 15 of Month 4:</b> Lord Buddha’s birth, enlightenment and parinirvana (or, according to Geshe Dakpa and other sources, only the latter two).<br/><b>• Day 4 of Month 6:</b> Lord Buddha’s first teaching.<br/><b>• Day 22 of Month 9:</b> Lord Buddha’s descent from God Realm of Thirty-three.</br/></data-ignore>",
+  :day_key=> "buddha_days",
+  :abbr=> ""
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Eclipses",
+  :subtitle=> "",
+  :desc=> "The karmic results are multiplied by one hundred million on <b>solar eclipses</b> and by seven million on &nbsp;<b>lunar</b>. All dates listed here are also listed by NASA: eclipse.gfsc.nasa.gov.",
+  :day_key=> "eclipses",
+  :abbr=> ""
+},
+{
+  :short_name=> "Precepts",
+  :day_type=> "auspicious",
+  :title=> "Eight Mahayana Precepts",
+  :subtitle=> "",
+  :desc=> "Rinpoche recommends taking these 24-hour vows on days on which the karmic effects of positive actions are multiplied:<br/><b>• Buddha days</b><br/><b>• Days 8, 15</b> (full moon) and <b>30</b> (new moon) <b>of every Tibetan month</b><br/><b>• Eclipses</b><br/>",
+  :day_key=> "eight_mahayana_precepts",
+  :abbr=> ""
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Favorable Day (Earth-Earth)",
+  :subtitle=> "Less powerful than UD, VUD",
+  :desc=> "Most auspicious. <b>Earth-earth</b> combination enables all goals, whatever you want, to be <b>easily attained</b>. Excellent for construction projects and making objects relating to the three doors of the Buddha (statues, stupas and books); buying land, doing business; increasing activities.",
+  :day_key=> "favorable_day_earth_earth",
+  :abbr=> "FD-EE"
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Favorable Day (Water-Water)",
+  :subtitle=> "Less powerful than UD, VUD",
+  :desc=> "Very auspicious. <b>Water-water</b> combination can <b>increase vitality</b>. Excellent for long-life practices and initiations; making and dispensing medicine; marriage and engagement; investments; expanding businesses, properties, etc.",
+  :day_key=> "favorable_day_water_water",
+  :abbr=> "FD-WW"
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Favorable Day (Earth-Water)",
+  :subtitle=> "Less powerful than UD, VUD",
+  :desc=> "Very auspicious. <b>Earth-water</b> combination can bring <b>happiness</b>. Excellent for joyful activities such as parties and weddings; enthronements and inductions.",
+  :day_key=> "favorable_day_earth_water",
+  :abbr=> "FD-EW"
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Favorable Day (Fire-Fire)",
+  :subtitle=> "Less powerful than UD, VUD",
+  :desc=> "Auspicious. <b>Fire-fire</b> combination can <b>increase</b> wealth and property. Good for selling or doing business; charitable giving; wealth practices; planting seeds.",
+  :day_key=> "favorable_day_fire_fire",
+  :abbr=> "FD-FF"
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Favorable Day (Air-Air)",
+  :subtitle=> "Less powerful than UD, VUD",
+  :desc=> "Auspicious. <b>Air-air</b>  conbination enable goals to be <b>achieved quickly</b>. Good for moving house; travel; getting things done quickly; settling disputes; wrathful activities.",
+  :day_key=> "favorable_day_air_air",
+  :abbr=> "FD-AA"
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Favorable Day (Fire-Air)",
+  :subtitle=> "Less powerful than UD, VUD",
+  :desc=> "Auspicious. <b>Fire-air</b> combination enables <b>success, power, action</b>. Good for spiritual practice, making requests to deities such as Mahakala and Kalarupa; hanging prayer flags (except  on NPF days). Peaceful, increasing, and powerful activities will succeed.",
+  :day_key=> "favorable_day_fire_air",
+  :abbr=> "FD-FA"
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Fire Puja",
+  :subtitle=> "",
+  :desc=> "Many days every month are good for fire pujas, required for those who have completed certain tantric retreats. Doing them “on the wrong days can cause sickness and obstacles,” according to Rinpoche.",
+  :day_key=> "fire_puja",
+  :abbr=> ""
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Full Moon",
+  :subtitle=> "",
+  :desc=> "<b>15th of Tibetan month</b>; good for practice.",
+  :day_key=> "full_moon",
+  :abbr=> ""
+},
+{
+  :short_name=> "Medicine Buddha",
+  :day_type=> "auspicious",
+  :title=> "Medicine Buddha Puja",
+  :subtitle=> "",
+  :desc=> "<b>8th or 15th of every Tibetan month</b>; recommended by Rinpoche.",
+  :day_key=> "medicine_buddha_puja",
+  :abbr=> ""
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Naga Puja",
+  :subtitle=> "",
+  :desc=> "One or more days in most months.",
+  :day_key=> "naga_puja",
+  :abbr=> ""
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "New Moon",
+  :subtitle=> "",
+  :desc=> "<b>30th of Tibetan month</b>; good for practice.",
+  :day_key=> "new_moon",
+  :abbr=> ""
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Prayer Flags",
+  :subtitle=> "",
+  :desc=> "Good for hanging prayer flags; two or more days in every month.",
+  :day_key=> "prayer_flags",
+  :abbr=> "PF"
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Prayers and Practices",
+  :subtitle=> "",
+  :desc=> "Good for spiritual practice; many days in every month.",
+  :day_key=> "prayers_and_practices",
+  :abbr=> "PP"
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Protector Puja",
+  :subtitle=> "",
+  :desc=> "<b>29th of Tibetan month.</b>",
+  :day_key=> "protector_puja",
+  :abbr=> ""
+},
+{
+  :short_name=> "Sojong",
+  :day_type=> "auspicious",
+  :title=> "Sojong: Monastics’ Confession Days",
+  :subtitle=> "",
+  :desc=> "In general, Sojong falls on the fifteenth day from the previous Sojong, except for every fourth Sojong, which falls on the fourteenth day. However, according to Geshe Dakpa, sometimes this pattern changes at the beginning and end of the lunar year.",
+  :day_key=> "sojong_monastics_confession_days",
+  :abbr=> ""
+},
+{
+  :short_name=> "",
+  :day_type=> "auspicious",
+  :title=> "Tara Puja",
+  :subtitle=> "",
+  :desc=> "<b>8th of every Tibetan month</b>; recommended by Rinpoche.",
+  :day_key=> "tara_puja",
+  :abbr=> ""
+},
+{
+  :short_name=> "Tsog",
+  :day_type=> "auspicious",
+  :title=> "<em>Tsog</em> Offering",
+  :subtitle=> "",
+  :desc=> "<b>10th</b> and <b>25th of every Tibetan month</b>; according to Rinpoche, “Those who have received an initiation into Highest Yoga Tantra have a commitment to perform <em>tsog</em>” on these days.",
+  :day_key=> "tsog_offering",
+  :abbr=> ""
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Starting New Business Activities",
+  :subtitle=> "",
+  :desc=> "<b>Days 2, 12, 22 of every Tibetan month.</b>",
+  :day_key=> "no_starting_new_business_activities",
+  :abbr=> "NB"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Community Events",
+  :subtitle=> "",
+  :desc=> "<b>Days 10, 20, 30 of every Tibetan month</b>; not good for public community events, such as at one’s Dharma center.",
+  :day_key=> "no_community_events",
+  :abbr=> "NCE"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Cutting Hair",
+  :subtitle=> "",
+  :desc=> "Applies to lay and ordained people; from <em>The Sutra Chapter of Bodhisattva's Hair, Pacifying the Date of Cutting Hair</em>, translated by Lama Zopa Rinpoche. <b>Days 1, 2, 6, 7, 12, 16, 17, 20, 21, 24, 25, 28, 29, 30 of every Tibetan month</b>.",
+  :day_key=> "no_cutting_hair",
+  :abbr=> "NCH"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Funerals or Cremations",
+  :subtitle=> "",
+  :desc=> "<b>Days 8, 18, 28 of every Tibetan month.</b>",
+  :day_key=> "no_funerals_or_cremations",
+  :abbr=> "NF"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Inviting Guests for Parties",
+  :subtitle=> "",
+  :desc=> "<b>Days 1, 11, 21 of every Tibetan month.</b>",
+  :day_key=> "no_inviting_guests_for_parties",
+  :abbr=> "NG"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Starting to Build New Houses",
+  :subtitle=> "",
+  :desc=> "<b>Days 6, 16, 26 of every Tibetan month</b>",
+  :day_key=> "no_starting_to_build_new_houses",
+  :abbr=> "NH"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Memorials or Wakes",
+  :subtitle=> "",
+  :desc=> "<b>Days 9, 19, 29 of every Tibetan month.</b>",
+  :day_key=> "no_memorials_or_wakes",
+  :abbr=> "NM"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Medical Procedures",
+  :subtitle=> "",
+  :desc=> "<b>Days 4, 8, 11, 15, 18, 22, 25, 29 of every Tibetan month.</b>",
+  :day_key=> "no_medical_procedures",
+  :abbr=> "NMP"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Prayer Flags",
+  :subtitle=> "",
+  :desc=> "According to Rinpoche, by hanging prayer flags (including long prayer flags and banners) on the wrong dates, “you will continuously receive obstacles.” <br/><b>• Days 10, 22 of Months 1, 5, 9</b><br/><b>• Days 7, 19 of Months 2, 6, 10</b><br/><b>• Days 4, 16, 28 of Months 3, 7, 11</b><br/><b>• Days 1, 13, 25 of Months 4, 8, 12</b><br/>",
+  :day_key=> "no_prayer_flags",
+  :abbr=> "NPF"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Weddings",
+  :subtitle=> "",
+  :desc=> "<b>Days 7, 17, 27 of every Tibetan month.</b>",
+  :day_key=> "no_weddings",
+  :abbr=> "NW"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "No Wealth Rituals",
+  :subtitle=> "",
+  :desc=> "One or more days in every month.",
+  :day_key=> "no_wealth_rituals",
+  :abbr=> "NWR"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "Unfavorable Day",
+  :subtitle=> "More powerful than FD",
+  :desc=> "Not good for starting important activities; one or two days in most months.",
+  :day_key=> "unfavorable_day",
+  :abbr=> "UD"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "Unfavorable Day (Earth-Air)",
+  :subtitle=> "",
+  :desc=> "Inauspicious. <b>Earth-air</b> combination can cause <b>decline</b> in wealth and property. Not good for medical procedures or starting important activities.",
+  :day_key=> "unfavorable_day_earth_air",
+  :abbr=> "UD-EA"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "Unfavorable Day (Water-Air)",
+  :subtitle=> "",
+  :desc=> "Inauspicious. <b>Water-air</b> combination can cause <b>disharmony</b>, separating friends and family. Not good for medical procedures or starting important activities.",
+  :day_key=> "unfavorable_day_water_air",
+  :abbr=> "UD-WA"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "Unfavorable Day (Earth-Fire)",
+  :subtitle=> "",
+  :desc=> "Inauspicious. <b>Earth-fire</b> combination can cause <b>suffering</b>, risk of burns, disputes. Not good for medical procedures or starting activities.",
+  :day_key=> "unfavorable_day_earth_fire",
+  :abbr=> "UD-EF"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "Unfavorable Day (Fire-Water)",
+  :subtitle=> "",
+  :desc=> "Most inauspicious. <b>Fire-water</b> combination can <b>weaken vitality</b>; risk of shortening lifespan. Not good for medical procedures or starting important activities.",
+  :day_key=> "unfavorable_day_fire_water",
+  :abbr=> "UD-FW"
+},
+{
+  :short_name=> "",
+  :day_type=> "inauspicious",
+  :title=> "Very Unfavorable Day",
+  :subtitle=> "More powerful than FD",
+  :desc=> "Not good for medical procedures or starting important activities.",
+  :day_key=> "very_unfavorable_day",
+  :abbr=> "VUD"
+}]
