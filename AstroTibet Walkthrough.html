@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AstroTibet App Walkthrough</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    background: #111;
+    font-family: Georgia, serif;
+  }
+
+  /* ── One slide at a time; centers the inner group horizontally ── */
+  .slide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: stretch;
+    background: #111;
+  }
+  .slide:target { display: flex; }
+
+  /* ── Inner group: sized to content width, full height ── */
+  .slide-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 100vh;
+  }
+
+  /* ── Prev / next arrows ── */
+  .slide-arrow {
+    flex: 0 0 clamp(44px, 4vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1008;
+    color: #c8b89a;
+    text-decoration: none;
+    font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+    font-family: sans-serif;
+    transition: background 0.15s, color 0.15s;
+    user-select: none;
+  }
+  .slide-arrow:hover {
+    background: #4a3728;
+    color: #fff;
+  }
+
+  /* ── Image area ── */
+  .img-area {
+    flex: 0 0 auto;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+  .img-area.zoomed {
+    overflow: auto;
+    cursor: zoom-out;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .img-area img {
+    height: 100vh;
+    width: auto;
+    display: block;
+    pointer-events: none;
+  }
+  .img-area.zoomed img {
+    height: 200vh;
+    width: auto;
+  }
+
+  /* ── Caption panel ── */
+  .caption-panel {
+    width: clamp(260px, 22vw, 360px);
+    flex-shrink: 0;
+    background: #faf8f5;
+    border-left: 2px solid #4a3728;
+    display: flex;
+    flex-direction: column;
+  }
+  .caption-body {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 1.5rem 1.25rem 1rem;
+  }
+  .caption-body h2 {
+    font-size: clamp(1rem, 1.4vw, 1.3rem);
+    color: #4a3728;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  .caption-body ul {
+    padding-left: 1.1rem;
+    font-size: clamp(0.95rem, 1.3vw, 1.2rem);
+    line-height: 1.6;
+    color: #333;
+  }
+  .caption-body li { margin-bottom: 0.4rem; }
+
+  /* ── Pager ── */
+  .pager {
+    flex-shrink: 0;
+    padding: 0.5rem 0.4rem;
+    background: #4a3728;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+  .pg-arrow, .pg-num {
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: clamp(0.78rem, 1vw, 0.95rem);
+    min-width: 1.7rem;
+    height: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.12);
+  }
+  .pg-arrow:hover, .pg-num:hover { background: rgba(255,255,255,0.3); }
+  .pg-cur {
+    font-family: sans-serif;
+    font-size: clamp(0.78rem, 1vw, 0.95rem);
+    font-weight: bold;
+    min-width: 1.7rem;
+    height: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.88);
+    color: #4a3728;
+  }
+</style>
+</head>
+<body>
+
+<div class="slide" id="s1">
+  <div class="slide-inner">
+    <a href="#s32" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/01 App icons.PNG" alt="01 App icons" />
+    </div>
+    <a href="#s2" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>01 App icons</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><span class="pg-cur">1</span><a href="#s2" class="pg-num">2</a><a href="#s3" class="pg-num">3</a><a href="#s4" class="pg-num">4</a><a href="#s5" class="pg-num">5</a><a href="#s6" class="pg-num">6</a><a href="#s7" class="pg-num">7</a><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s2">
+  <div class="slide-inner">
+    <a href="#s1" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/02 Loading screen.PNG" alt="02 Loading screen" />
+    </div>
+    <a href="#s3" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>02 Loading screen</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s1" class="pg-num">1</a><span class="pg-cur">2</span><a href="#s3" class="pg-num">3</a><a href="#s4" class="pg-num">4</a><a href="#s5" class="pg-num">5</a><a href="#s6" class="pg-num">6</a><a href="#s7" class="pg-num">7</a><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s3">
+  <div class="slide-inner">
+    <a href="#s2" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/03 Today (as of 2017).PNG" alt="03 Today (as of 2017)" />
+    </div>
+    <a href="#s4" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>03 Today (as of 2017)</h2>
+        <ul><li>Tibetan months and days are based on lunar cycles and are numbered differently than Western ones.</li><li>There is a mantra for each Western month; two versions of each mantra are available (one chanted by a Tibetan male, the other by a Western female).</li><li>The app isn't meant to make sense after the year is over (e.g., Nov 19 was a Sunday in 2017, and that's what it's calling "today").</li><li>In this color scheme, all entries should have white background, and this applies to lists throughout the whole app. It's a bug that some don't (such as "Favorable Day (Fire-Fire)" here).</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s1" class="pg-num">1</a><a href="#s2" class="pg-num">2</a><span class="pg-cur">3</span><a href="#s4" class="pg-num">4</a><a href="#s5" class="pg-num">5</a><a href="#s6" class="pg-num">6</a><a href="#s7" class="pg-num">7</a><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s4">
+  <div class="slide-inner">
+    <a href="#s3" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/04 Today ctd.PNG" alt="04 Today ctd" />
+    </div>
+    <a href="#s5" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>04 Today ctd</h2>
+        <ul><li>This list shows the four "day types" (out of about 40) that apply to Nov 19, 2017.</li><li>Some day types are "auspicious" (e.g., the first &amp; last here) and others "inauspicious" (e.g., the middle two here).</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s1" class="pg-num">1</a><a href="#s2" class="pg-num">2</a><a href="#s3" class="pg-num">3</a><span class="pg-cur">4</span><a href="#s5" class="pg-num">5</a><a href="#s6" class="pg-num">6</a><a href="#s7" class="pg-num">7</a><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s5">
+  <div class="slide-inner">
+    <a href="#s4" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/05 Next day.PNG" alt="05 Next day" />
+    </div>
+    <a href="#s6" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>05 Next day</h2>
+        <ul><li>Arrows at top right scroll through days.</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s1" class="pg-num">1</a><a href="#s2" class="pg-num">2</a><a href="#s3" class="pg-num">3</a><a href="#s4" class="pg-num">4</a><span class="pg-cur">5</span><a href="#s6" class="pg-num">6</a><a href="#s7" class="pg-num">7</a><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s6">
+  <div class="slide-inner">
+    <a href="#s5" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/06 All months.PNG" alt="06 All months" />
+    </div>
+    <a href="#s7" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>06 All months</h2>
+        <ul><li>Can get here from 2nd tab at the bottom ("Months").</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s2" class="pg-num">2</a><a href="#s3" class="pg-num">3</a><a href="#s4" class="pg-num">4</a><a href="#s5" class="pg-num">5</a><span class="pg-cur">6</span><a href="#s7" class="pg-num">7</a><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><a href="#s10" class="pg-num">10</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s7">
+  <div class="slide-inner">
+    <a href="#s6" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/07 All months ctd.PNG" alt="07 All months ctd" />
+    </div>
+    <a href="#s8" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>07 All months ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s3" class="pg-num">3</a><a href="#s4" class="pg-num">4</a><a href="#s5" class="pg-num">5</a><a href="#s6" class="pg-num">6</a><span class="pg-cur">7</span><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><a href="#s10" class="pg-num">10</a><a href="#s11" class="pg-num">11</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s8">
+  <div class="slide-inner">
+    <a href="#s7" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/08 January.PNG" alt="08 January" />
+    </div>
+    <a href="#s9" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>08 January</h2>
+        <ul><li>Tapping a month in the Months list shows a summary of the entire month.</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s4" class="pg-num">4</a><a href="#s5" class="pg-num">5</a><a href="#s6" class="pg-num">6</a><a href="#s7" class="pg-num">7</a><span class="pg-cur">8</span><a href="#s9" class="pg-num">9</a><a href="#s10" class="pg-num">10</a><a href="#s11" class="pg-num">11</a><a href="#s12" class="pg-num">12</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s9">
+  <div class="slide-inner">
+    <a href="#s8" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/09 January ctd.PNG" alt="09 January ctd" />
+    </div>
+    <a href="#s10" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>09 January ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s5" class="pg-num">5</a><a href="#s6" class="pg-num">6</a><a href="#s7" class="pg-num">7</a><a href="#s8" class="pg-num">8</a><span class="pg-cur">9</span><a href="#s10" class="pg-num">10</a><a href="#s11" class="pg-num">11</a><a href="#s12" class="pg-num">12</a><a href="#s13" class="pg-num">13</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s10">
+  <div class="slide-inner">
+    <a href="#s9" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/10 January ctd.PNG" alt="10 January ctd" />
+    </div>
+    <a href="#s11" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>10 January ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s6" class="pg-num">6</a><a href="#s7" class="pg-num">7</a><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><span class="pg-cur">10</span><a href="#s11" class="pg-num">11</a><a href="#s12" class="pg-num">12</a><a href="#s13" class="pg-num">13</a><a href="#s14" class="pg-num">14</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s11">
+  <div class="slide-inner">
+    <a href="#s10" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/11 January ctd.PNG" alt="11 January ctd" />
+    </div>
+    <a href="#s12" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>11 January ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s7" class="pg-num">7</a><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><a href="#s10" class="pg-num">10</a><span class="pg-cur">11</span><a href="#s12" class="pg-num">12</a><a href="#s13" class="pg-num">13</a><a href="#s14" class="pg-num">14</a><a href="#s15" class="pg-num">15</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s12">
+  <div class="slide-inner">
+    <a href="#s11" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/12 January ctd.PNG" alt="12 January ctd" />
+    </div>
+    <a href="#s13" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>12 January ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s8" class="pg-num">8</a><a href="#s9" class="pg-num">9</a><a href="#s10" class="pg-num">10</a><a href="#s11" class="pg-num">11</a><span class="pg-cur">12</span><a href="#s13" class="pg-num">13</a><a href="#s14" class="pg-num">14</a><a href="#s15" class="pg-num">15</a><a href="#s16" class="pg-num">16</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s13">
+  <div class="slide-inner">
+    <a href="#s12" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/13 January ctd.PNG" alt="13 January ctd" />
+    </div>
+    <a href="#s14" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>13 January ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s9" class="pg-num">9</a><a href="#s10" class="pg-num">10</a><a href="#s11" class="pg-num">11</a><a href="#s12" class="pg-num">12</a><span class="pg-cur">13</span><a href="#s14" class="pg-num">14</a><a href="#s15" class="pg-num">15</a><a href="#s16" class="pg-num">16</a><a href="#s17" class="pg-num">17</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s14">
+  <div class="slide-inner">
+    <a href="#s13" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/14 February.PNG" alt="14 February" />
+    </div>
+    <a href="#s15" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>14 February</h2>
+        <ul><li>Arrows at top right on a Month page scroll through months.</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s10" class="pg-num">10</a><a href="#s11" class="pg-num">11</a><a href="#s12" class="pg-num">12</a><a href="#s13" class="pg-num">13</a><span class="pg-cur">14</span><a href="#s15" class="pg-num">15</a><a href="#s16" class="pg-num">16</a><a href="#s17" class="pg-num">17</a><a href="#s18" class="pg-num">18</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s15">
+  <div class="slide-inner">
+    <a href="#s14" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/15 December.PNG" alt="15 December" />
+    </div>
+    <a href="#s16" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>15 December</h2>
+        <ul><li>Month scrolling wraps around to/from January and December.</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s11" class="pg-num">11</a><a href="#s12" class="pg-num">12</a><a href="#s13" class="pg-num">13</a><a href="#s14" class="pg-num">14</a><span class="pg-cur">15</span><a href="#s16" class="pg-num">16</a><a href="#s17" class="pg-num">17</a><a href="#s18" class="pg-num">18</a><a href="#s19" class="pg-num">19</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s16">
+  <div class="slide-inner">
+    <a href="#s15" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/16 December 1.PNG" alt="16 December 1" />
+    </div>
+    <a href="#s17" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>16 December 1</h2>
+        <ul><li>Tapping a day on a Month page goes to the detailed view for that day.</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s12" class="pg-num">12</a><a href="#s13" class="pg-num">13</a><a href="#s14" class="pg-num">14</a><a href="#s15" class="pg-num">15</a><span class="pg-cur">16</span><a href="#s17" class="pg-num">17</a><a href="#s18" class="pg-num">18</a><a href="#s19" class="pg-num">19</a><a href="#s20" class="pg-num">20</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s17">
+  <div class="slide-inner">
+    <a href="#s16" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/17 Upcoming by day type.PNG" alt="17 Upcoming by day type" />
+    </div>
+    <a href="#s18" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>17 Upcoming by day type</h2>
+        <ul><li>Can get here from 3rd tab at the bottom ("Upcoming").</li><li>It's a long list of about 40 types of days.</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s13" class="pg-num">13</a><a href="#s14" class="pg-num">14</a><a href="#s15" class="pg-num">15</a><a href="#s16" class="pg-num">16</a><span class="pg-cur">17</span><a href="#s18" class="pg-num">18</a><a href="#s19" class="pg-num">19</a><a href="#s20" class="pg-num">20</a><a href="#s21" class="pg-num">21</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s18">
+  <div class="slide-inner">
+    <a href="#s17" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/18 First day type upcoming.PNG" alt="18 First day type upcoming" />
+    </div>
+    <a href="#s19" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>18 First day type upcoming</h2>
+        <ul><li>Tapping on a day type shows all days in the year for which it applies.</li><li>Tapping on a day here goes to the detailed view for that day.</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s14" class="pg-num">14</a><a href="#s15" class="pg-num">15</a><a href="#s16" class="pg-num">16</a><a href="#s17" class="pg-num">17</a><span class="pg-cur">18</span><a href="#s19" class="pg-num">19</a><a href="#s20" class="pg-num">20</a><a href="#s21" class="pg-num">21</a><a href="#s22" class="pg-num">22</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s19">
+  <div class="slide-inner">
+    <a href="#s18" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/19 First day type upcoming ctd.PNG" alt="19 First day type upcoming ctd" />
+    </div>
+    <a href="#s20" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>19 First day type upcoming ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s15" class="pg-num">15</a><a href="#s16" class="pg-num">16</a><a href="#s17" class="pg-num">17</a><a href="#s18" class="pg-num">18</a><span class="pg-cur">19</span><a href="#s20" class="pg-num">20</a><a href="#s21" class="pg-num">21</a><a href="#s22" class="pg-num">22</a><a href="#s23" class="pg-num">23</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s20">
+  <div class="slide-inner">
+    <a href="#s19" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/20 First day type upcoming ctd.PNG" alt="20 First day type upcoming ctd" />
+    </div>
+    <a href="#s21" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>20 First day type upcoming ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s16" class="pg-num">16</a><a href="#s17" class="pg-num">17</a><a href="#s18" class="pg-num">18</a><a href="#s19" class="pg-num">19</a><span class="pg-cur">20</span><a href="#s21" class="pg-num">21</a><a href="#s22" class="pg-num">22</a><a href="#s23" class="pg-num">23</a><a href="#s24" class="pg-num">24</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s21">
+  <div class="slide-inner">
+    <a href="#s20" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/21 Second day type upcoming.PNG" alt="21 Second day type upcoming" />
+    </div>
+    <a href="#s22" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>21 Second day type upcoming</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s17" class="pg-num">17</a><a href="#s18" class="pg-num">18</a><a href="#s19" class="pg-num">19</a><a href="#s20" class="pg-num">20</a><span class="pg-cur">21</span><a href="#s22" class="pg-num">22</a><a href="#s23" class="pg-num">23</a><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s22">
+  <div class="slide-inner">
+    <a href="#s21" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/22 Upcoming ctd.PNG" alt="22 Upcoming ctd" />
+    </div>
+    <a href="#s23" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>22 Upcoming ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s18" class="pg-num">18</a><a href="#s19" class="pg-num">19</a><a href="#s20" class="pg-num">20</a><a href="#s21" class="pg-num">21</a><span class="pg-cur">22</span><a href="#s23" class="pg-num">23</a><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><a href="#s26" class="pg-num">26</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s23">
+  <div class="slide-inner">
+    <a href="#s22" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/23 About.PNG" alt="23 About" />
+    </div>
+    <a href="#s24" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>23 About</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s19" class="pg-num">19</a><a href="#s20" class="pg-num">20</a><a href="#s21" class="pg-num">21</a><a href="#s22" class="pg-num">22</a><span class="pg-cur">23</span><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><a href="#s26" class="pg-num">26</a><a href="#s27" class="pg-num">27</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s24">
+  <div class="slide-inner">
+    <a href="#s23" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/24 About ctd.PNG" alt="24 About ctd" />
+    </div>
+    <a href="#s25" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>24 About ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s20" class="pg-num">20</a><a href="#s21" class="pg-num">21</a><a href="#s22" class="pg-num">22</a><a href="#s23" class="pg-num">23</a><span class="pg-cur">24</span><a href="#s25" class="pg-num">25</a><a href="#s26" class="pg-num">26</a><a href="#s27" class="pg-num">27</a><a href="#s28" class="pg-num">28</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s25">
+  <div class="slide-inner">
+    <a href="#s24" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/25 About ctd.PNG" alt="25 About ctd" />
+    </div>
+    <a href="#s26" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>25 About ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s21" class="pg-num">21</a><a href="#s22" class="pg-num">22</a><a href="#s23" class="pg-num">23</a><a href="#s24" class="pg-num">24</a><span class="pg-cur">25</span><a href="#s26" class="pg-num">26</a><a href="#s27" class="pg-num">27</a><a href="#s28" class="pg-num">28</a><a href="#s29" class="pg-num">29</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s26">
+  <div class="slide-inner">
+    <a href="#s25" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/26 About_Help.PNG" alt="26 About_Help" />
+    </div>
+    <a href="#s27" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>26 About_Help</h2>
+        <ul><li>This is a good summary of the app's purpose and usage.</li></ul>
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s22" class="pg-num">22</a><a href="#s23" class="pg-num">23</a><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><span class="pg-cur">26</span><a href="#s27" class="pg-num">27</a><a href="#s28" class="pg-num">28</a><a href="#s29" class="pg-num">29</a><a href="#s30" class="pg-num">30</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s27">
+  <div class="slide-inner">
+    <a href="#s26" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/27 About_Help ctd.PNG" alt="27 About_Help ctd" />
+    </div>
+    <a href="#s28" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>27 About_Help ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s23" class="pg-num">23</a><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><a href="#s26" class="pg-num">26</a><span class="pg-cur">27</span><a href="#s28" class="pg-num">28</a><a href="#s29" class="pg-num">29</a><a href="#s30" class="pg-num">30</a><a href="#s31" class="pg-num">31</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s28">
+  <div class="slide-inner">
+    <a href="#s27" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/28 About_Help ctd.PNG" alt="28 About_Help ctd" />
+    </div>
+    <a href="#s29" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>28 About_Help ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><a href="#s26" class="pg-num">26</a><a href="#s27" class="pg-num">27</a><span class="pg-cur">28</span><a href="#s29" class="pg-num">29</a><a href="#s30" class="pg-num">30</a><a href="#s31" class="pg-num">31</a><a href="#s32" class="pg-num">32</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s29">
+  <div class="slide-inner">
+    <a href="#s28" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/29 About_Help ctd.PNG" alt="29 About_Help ctd" />
+    </div>
+    <a href="#s30" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>29 About_Help ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><a href="#s26" class="pg-num">26</a><a href="#s27" class="pg-num">27</a><a href="#s28" class="pg-num">28</a><span class="pg-cur">29</span><a href="#s30" class="pg-num">30</a><a href="#s31" class="pg-num">31</a><a href="#s32" class="pg-num">32</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s30">
+  <div class="slide-inner">
+    <a href="#s29" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/30 About_Credits.PNG" alt="30 About_Credits" />
+    </div>
+    <a href="#s31" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>30 About_Credits</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><a href="#s26" class="pg-num">26</a><a href="#s27" class="pg-num">27</a><a href="#s28" class="pg-num">28</a><a href="#s29" class="pg-num">29</a><span class="pg-cur">30</span><a href="#s31" class="pg-num">31</a><a href="#s32" class="pg-num">32</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s31">
+  <div class="slide-inner">
+    <a href="#s30" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/31 About_Credits ctd.PNG" alt="31 About_Credits ctd" />
+    </div>
+    <a href="#s32" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>31 About_Credits ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><a href="#s26" class="pg-num">26</a><a href="#s27" class="pg-num">27</a><a href="#s28" class="pg-num">28</a><a href="#s29" class="pg-num">29</a><a href="#s30" class="pg-num">30</a><span class="pg-cur">31</span><a href="#s32" class="pg-num">32</a><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+<div class="slide" id="s32">
+  <div class="slide-inner">
+    <a href="#s31" class="slide-arrow">&#8249;</a>
+    <div class="img-area">
+      <img src="Walkthrough screenshots/32 About_Credits ctd.PNG" alt="32 About_Credits ctd" />
+    </div>
+    <a href="#s1" class="slide-arrow">&#8250;</a>
+    <aside class="caption-panel">
+      <div class="caption-body">
+        <h2>32 About_Credits ctd</h2>
+        
+      </div>
+      <nav class="pager"><a href="#s1" class="pg-arrow" title="First">&#x23EE;</a><a href="#s24" class="pg-num">24</a><a href="#s25" class="pg-num">25</a><a href="#s26" class="pg-num">26</a><a href="#s27" class="pg-num">27</a><a href="#s28" class="pg-num">28</a><a href="#s29" class="pg-num">29</a><a href="#s30" class="pg-num">30</a><a href="#s31" class="pg-num">31</a><span class="pg-cur">32</span><a href="#s32" class="pg-arrow" title="Last">&#x23ED;</a></nav>
+    </aside>
+  </div>
+</div>
+
+
+<script>
+(function() {
+  document.addEventListener('keydown', function(e) {
+    var slide = document.querySelector('.slide:target') ||
+                document.getElementById('s1');
+    if (!slide) return;
+    var arrows = slide.querySelectorAll('.slide-arrow');
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   arrows[0] && arrows[0].click();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  arrows[1] && arrows[1].click();
+  });
+
+  document.querySelectorAll('.img-area').forEach(function(area) {
+    area.addEventListener('click', function() {
+      this.classList.toggle('zoomed');
+    });
+  });
+
+  window.addEventListener('hashchange', function() {
+    document.querySelectorAll('.img-area.zoomed').forEach(function(a) {
+      a.classList.remove('zoomed');
+    });
+  });
+
+  if (!location.hash || !document.querySelector(location.hash + '.slide')) {
+    document.getElementById('s1').style.display = 'flex';
+  }
+})();
+</script>
+</body>
+</html>
