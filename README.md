@@ -3,39 +3,38 @@ Highlights from past versions of the AstroTibet mobile app
 
 ## About AstroTibet
 
-The annual series of AstroTibet apps from 2011 to 2017 served as an interactive version of the annual Liberation Calendar, which is an astrological calendar based on Tibetan Buddhism. It shows which days in the year are favorable or unfavorable for about 40 types of activities.
+The annual series of AstroTibet apps from 2011 to 2018 served as an interactive version of the annual [Liberation Calendar](https://liberationcalendar.com/), an astrological calendar based on Tibetan Buddhism. It shows which days in the year are favorable or unfavorable for about 40 types of activities.
 
-AstroTibet and the Liberation Calendar have been the top funding sources for Liberation Prison Project, a 501(c)(3) nonprofit that supports people in prison interested in exploring, studying, and practicing Buddhism. The focus is on practical methods for managing anger and developing compassion.
+AstroTibet and the Liberation Calendar have been the top funding sources for Liberation Prison Project (LPP), a 501(c)(3) nonprofit that supports people in prison interested in exploring, studying, and practicing Buddhism. The focus is on practical methods for managing anger and developing compassion.
 
-In 2010 I hired a mobile app developer to create and maintain AstroTibet, using my own personal funds as a donation-in-kind to Liberation Prison Project. But after AstroTibet '17, he became unavailable to work on the project.
+The Liberation Calendar was created in 1998 by Ven. Robina Courtin, who founded LPP in 1996 and served as Executive Director until 2010. She introduced the concept of the AstroTibet app in 2010 and invited me (John Castelloe), the volunteer IT manager for LPP since that time, to be the technical lead. I hired mobile app developer Jerrod Blavos to create and maintain AstroTibet, using personal funds as a donation-in-kind to LPP. After developing AstroTibet '11 through AstroTibet '14, Jerrod generously offered his work on AstroTibet '15 through AstroTibet '18 as an in-kind donation to LPP as well.
 
-Since 2017 there have been many people asking for another AstroTibet app. I've wanted to make that happen, but I haven't learned mobile app development myself or found an affordable developer. Now I'm combining those two options by seeking a developer with whom I can participate in the development process and learn by experience.
-
-My goal is to eventually become qualified to implement and maintain AstroTibet, so that I can offer it sustainably every year as a fundraiser for Liberation Prison Project. I've been a developer for data analysis software for over 20 years but have mostly used outdated tools like Emacs and languages like C. But in recent years I've started to use modern tools like VSCode and Git, and I'm ready to learn mobile app development.
+Since 2018 many people have been asking LPP to produce an app again, and we're excited to have the opportunity now. 
 
 ## Files from AstroTibet '17
 
-### Android build
-- This is the final .apk file
-- We can log in to my Google Play developer console to access more files (but I don't understand them)
+This repository is based on AstroTibet '17 (rather than '18) because it has the most complete archive.
 
-### iOS build
-- We can log in to my Apple Developer account to access files for the iOS version (and I don't understand these either)
+### Android build
+- This is the .apk file for AstroTibet '17, downloaded before the Google Play Console account expired in 2024. The associated Google account is still accessible, but nothing AstroTibet-related is there anymore. To resume app-development we would need to create a new Google Play Console account for a one-time fee of $25.
+
+### iOS builds
+- The Apple Developer account for AstroTibet is accessible, but the membership expired several years ago. It maintains a history of all the AstroTibet apps, but we would need to re-join and pay the $100 annual fee to access app-related files. I don't have any iOS builds archived.
 
 ### Data package (1. initial stage)
-- This is the calendar grid data I started with plus a SAS program that converts it to a structure more convenient for the developer
+- This is the raw calendar grid data and a SAS program that does some validation to detect astrology mistakes and converts it to a structure that was more convenient for the app developer at the time.
 
 ### Data package (2. final stage)
-- This is the complete package of files that I gave to the developer
+- This is the complete package of files that was sent to the app developer.
 
 ### Hardcopy
-- This is the annual Liberation Calendar PDF product that I use as a source for data and design elements
+- This is the annual Liberation Calendar PDF product that I used as a source for data and design elements. The 2017 and 2026 versions are included.
 
 ### Marketing screenshots
-- These were used for listings on the iTunes Store, Google Play, and Amazon
+- These were used for listings on the iOS App Store, Google Play, and Amazon.
 
 ### Walkthrough screenshots
-- This provides a full tour of the app's features
+- For a full tour of the app's features, you can step through the screenshots as you read the notes below.
 - Notes:
    - 03 Today (as of 2017)
       - Tibetan months and days are based on lunar cycles and are numbered differently than Western ones.
