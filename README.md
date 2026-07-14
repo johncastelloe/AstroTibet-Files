@@ -41,7 +41,7 @@ This repository is based on AstroTibet '17 (rather than '18) because it has the 
 
 ### Walkthrough screenshots
 
-Click [here](AstroTibet Walkthrough.html) for a full slideshow tour of the app's features. The descriptions within the slideshow are also shown below.
+Click [here](AstroTibet%20Walkthrough.html) for a full slideshow tour of the app's features. The descriptions within the slideshow are also shown below.
 
 - 03 Today (as of 2017)
    - Tibetan months and days are based on lunar cycles and are numbered differently than Western ones.
@@ -122,9 +122,9 @@ Note that the specs below were for the original 2011 version. Since then we have
 9. Key view
    - same as "KEY" on last page of hardcopy
 10. Credits view
-   - similar to page 29 of 2010 hardcopy;  shows details for deity images, mantras, and quotes for each month
+    - similar to page 29 of 2010 hardcopy;  shows details for deity images, mantras, and quotes for each month
 11. Navigation buttons
-   - buttons at bottom of each screen enabling user to quickly jump to  month, day, search, credits, options, etc. views
+    - buttons at bottom of each screen enabling user to quickly jump to  month, day, search, credits, options, etc. views
 
 ### Marketing ideas
 
