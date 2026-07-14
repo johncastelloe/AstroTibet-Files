@@ -41,7 +41,7 @@ This repository is based on AstroTibet '17 (rather than '18) because it has the 
 
 ### Walkthrough screenshots
 
-Click [here](AstroTibet%20Walkthrough.html) for a full slideshow tour of the app's features. The descriptions within the slideshow are also shown below.
+Click [here](https://johncastelloe.github.io/AstroTibet-Files/AstroTibet%20Walkthrough.html) for a full slideshow tour of the app's features. The descriptions within the slideshow are also shown below.
 
 - 03 Today (as of 2017)
    - Tibetan months and days are based on lunar cycles and are numbered differently than Western ones.
