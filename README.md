@@ -3,7 +3,7 @@ Highlights from past versions of the AstroTibet mobile app
 
 ## About AstroTibet
 
-The annual series of AstroTibet apps from 2011 to 2018 served as an interactive version of the annual [Liberation Calendar](https://liberationcalendar.com/), an astrological calendar based on Tibetan Buddhism. It shows which days in the year are favorable or unfavorable for about 40 types of activities.
+The annual series of AstroTibet apps from 2011 to 2018 served as an interactive version of the annual <a href="https://liberationcalendar.com/" target="_blank">Liberation Calendar</a>, an astrological calendar based on Tibetan Buddhism. It shows which days in the year are favorable or unfavorable for about 40 types of activities.
 
 AstroTibet and the Liberation Calendar have been the top funding sources for Liberation Prison Project (LPP), a 501(c)(3) nonprofit that supports people in prison interested in exploring, studying, and practicing Buddhism. The focus is on practical methods for managing anger and developing compassion.
 
@@ -41,7 +41,7 @@ This repository is based on AstroTibet '17 (rather than '18) because it has the 
 
 ### Walkthrough screenshots
 
-Click [here](https://johncastelloe.github.io/AstroTibet-Files/AstroTibet%20Walkthrough.html) for a full slideshow tour of the app's features. The descriptions within the slideshow are also shown below.
+Click <a href="https://johncastelloe.github.io/AstroTibet-Files/AstroTibet%20Walkthrough.html" target="_blank">here</a> for a full slideshow tour of the app's features. The descriptions within the slideshow are also shown below.
 
 - 03 Today (as of 2017)
    - Tibetan months and days are based on lunar cycles and are numbered differently than Western ones.
